@@ -8,7 +8,7 @@ def setup():
     a, b, c = 10, 28, 8/3
 
     points = []
-    size(1920, 1080)
+    size(1000, 1000)
     background(0)
 
 def draw():
@@ -26,14 +26,14 @@ def draw():
 
     stroke(255)                  ## set stroke color to white
     translate(width/2, height/2) ## move drawing pointer to center of screen
-    scale(15)                    ## scale up the stroke size
+    scale(12)                    ## scale up the stroke size
 
     background(0) ## draw background again cover points from last frame
         
     for i in points:      ## go through all points to draw them
         point(i[0], i[1]) ## draw a point at x, y for each point in list
 
-        if len(points) > 1000: ## trail off points after this number
+        if len(points) > 750: ## trail off points after this number
             points.pop(0)
 
     points.append([x, y]) ## append point to points list so that they can be drawn in sequence and removed
