@@ -1,11 +1,15 @@
+
 ## defining starting location (cannot be all 0.0 or else the calculations always yield 0)
 x, y, z = 0.1, 0.0, 0.0
 
 ## defining constants (Lorenz's values)
 a, b, c = 10, 28, 8/3
 
+points = []
+
 def setup():
-    size(800, 600)
+
+    size(1920, 1080)
     background(0)
 
 def draw():
@@ -25,4 +29,14 @@ def draw():
     stroke(255)                  ## set stroke color to white
     translate(width/2, height/2) ## move drawing pointer to center of screen
     scale(5)                     ## scale up the stroke size
-    point(x, y)                  ## draw a point at x, y
+
+    background(0) ## draw background again cover points from last frame
+    
+    for i in points:
+        point(i[0], i[1]) ## draw a point at x, y for each point in list
+
+        if len(points) > 250: ## trail off points after this number
+            points.pop(0)
+
+    points.append([x, y])
+
